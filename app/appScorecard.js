@@ -12,23 +12,24 @@ $(document).ready(function() {
 
     var i = array.length;
 
-    if ((i > 0) && (rowID < 19) && ((array[0]) === 10) && ((array.length) < 2)) {
+    if ((i > 0) && (rowID < 19) && ((array[0]) === 10) && ((i) < 2)) {
       $('#' + (rowID + 1)).text("X");
+      $('#' + (rowID )).text("");
       rowID += 1;
       array.push(0);
     }
-    if ((i > 0) && (rowID < 19) && ((array[0] + array[1]) === 10) && ((array.length) < 3)) {
+    if ((i > 0) && (rowID < 19) && ((array[0] + array[1]) === 10) && ((i) < 3) && ((array[0]) != 10)) {
       $('#' + (rowID)).text("/");
     }
 
     if ((i > 0) && (rowID < 19) && ((array[0] + array[1]) > 10)) {
       $('#' + (rowID)).text("");
       array.pop();
-      alert("You cannot knock down more than 10 pins!!")
+      alert("You cannot knock down more than 10 pins!!");
       return
     }
-    var i = array.length;
-    if ((i > 0) && ((i) % 2 == 0) && (rowID < 19)) {
+    i = array.length;
+    if ((i > 0) && ((i) % 2 === 0) && (rowID < 19)) {
       roll2 = array.pop();
       roll1 = array.pop();
       scorecard.roll(roll1, roll2);

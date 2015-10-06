@@ -2,63 +2,70 @@
 Bowling Challenge
 =================
 
-    Test time: Friday, the entire day and the weekend if you need it.
-    Feel free to use Google, your notes, and your books.
+![alt text](https://github.com/ajitsy/bowling-challenge/blob/master/images/screenshot.png)
 
-Task: 
------
-
+Task:
+-------
 Count and sum the scores of a bowling game for one player (in JavaScript).
 
-A bowling game consists of 10 frames in which the player tries to knock down the 10 pins. In every frame the player can roll one or two times. The actual number depends on strikes and spares. The score of a frame is the number of knocked down pins plus bonuses for strikes and spares. After every frame the 10 pins are reset.
+How to Use:
+-------
 
-As usual please start by 
+```
+$ git clone https://github.com/annaschechter/bowling-challenge.git
+```
 
-* Filling out your learning plan self review for the week: https://github.com/makersacademy/learning_plan (if you haven't already) - note that next week is lab week, so please include information about the projects you plan to work on
-* Forking this repo
+Open Bowling.html in your preferred browser
 
-* Finally submit a pull request before Monday week at 9am with your solution or partial solution.  However much or little amount of code you wrote please please please submit a pull request before Monday week at 9am.  And since next week is lab week you have a full extra week to work on this.
+```
+$ open SpecRunner.html
+```
 
+Run Jasmine to see all tests pass:
 
-### Optional Extra
+```
+$ open SpecRunner.html
+```
 
-Create a nice interactive animated interface with jQuery.
+Technologies Used:
+-------
+* Javascript
+* Jasmine
+* JQuery
 
-## Strikes
+Tests:
+-------
 
-The player has a strike if he knocks down all 10 pins with the first roll in a frame. The frame ends immediately (since there are no pins left for a second roll). The bonus for that frame is the number of pins knocked down by the next two rolls. That would be the next frame, unless the player rolls another strike.
+```
+Scorecard
+    can see scores but no totals
+        cannot score more than 10 points for first roll
+        cannot score more than 10 points for second roll
+        cannot score more than 10 points for third roll
+        cannot score more than 10 points based on two rolls
+        should allow only 10 frames
+        cannot use 3rd roll for 10th frame if no strike/spare in frame 10
+    can calculate frame total
+        shows the frame score
+        shows the frame score as NaN when pending a roll due to a spare
+        adds additional bonus points for spares and shows score
+        adds additional bonus points for a strike and shows score
+        adds additional bonus points for two consecutive strikes and shows score
+        adds additional bonus points for spares and followed by a strike and shows score
+        should take total frame 9 to 30 if frame 9 and subsequent 2 rolls are strikes
+        calculates 10th frame total
+            gives a total of 30 if player has 3 consecutive strikes
+            calculates correct total if player has no strike or spare
+            calculates correct total if player has a spare
+            calculates correct total if player has a spare & a strike(on 3rd roll)
+    calculates running total
+        running total starts at zero
+        collates frame totals within running total
+        returns the running total value
+        does not update running total if expecting a bonus roll
+        rolls the following: 1,3,1,9,10,0 and expect running score of 24
+        rolls 3 consecutive strikes and a spare & expects running score of 40
+        expects to score 300 for perfect game
 
-## Spares
-
-The player has a spare if the knocks down all 10 pins with the two rolls of a frame. The bonus for that frame is the number of pins knocked down by the next roll (first roll of next frame).
-
-## 10th frame
-
-If the player rolls a strike or spare in the 10th frame they can roll the additional balls for the bonus. But they can never roll more than 3 balls in the 10th frame. The additional rolls only count for the bonus not for the regular frame count.
-
-    10, 10, 10 in the 10th frame gives 30 points (10 points for the regular first strike and 20 points for the bonus).
-    1, 9, 10 in the 10th frame gives 20 points (10 points for the regular spare and 10 points for the bonus).
-
-## Gutter Game
-
-A Gutter Game is when the player never hits a pin (20 zero scores).
-
-## Perfect Game
-
-A Perfect Game is when the player rolls 12 strikes (10 regular strikes and 2 strikes for the bonus in the 10th frame). The Perfect Game scores 300 points.
-
-In the image below you can find some score examples.
-
-More about ten pin bowling here: http://en.wikipedia.org/wiki/Ten-pin_bowling
-
-![Ten Pin Score Example](images/example_ten_pin_scoring.png)
-
-CI
---
-
-If you don't follow the usual Jasmine convention of having your tests in `spec` and your code in `src`, or you've built your code into a little app, CI will probably fail for you as we are doing *sneaky things*&trade; to make your tests run. However, there is a simple fix:
-
-1. Open up your `.travis.yml`
-2. On line 8, you will see where it looks for your code (`'src/**/*.js'`) and your tests (`'spec/**/*.js'`)
-3. Adjust these to point to the correct directories
-4. Done.
+24 specs, 0 failures
+```
