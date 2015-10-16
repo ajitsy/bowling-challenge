@@ -12,7 +12,7 @@ How to Use:
 -------
 
 ```
-$ git clone https://github.com/annaschechter/bowling-challenge.git
+$ git clone https://github.com/ajitsy/bowling-challenge.git
 ```
 
 Open Bowling.html in your preferred browser
