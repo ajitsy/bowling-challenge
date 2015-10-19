@@ -11,6 +11,8 @@ Count and sum the scores of a bowling game for one player (in JavaScript).
 How to Use:
 -------
 
+Clone the repository
+
 ```
 $ git clone https://github.com/ajitsy/bowling-challenge.git
 ```
@@ -18,7 +20,7 @@ $ git clone https://github.com/ajitsy/bowling-challenge.git
 Open Bowling.html in your preferred browser
 
 ```
-$ open SpecRunner.html
+$ open Bowling.html
 ```
 
 Run Jasmine to see all tests pass:
